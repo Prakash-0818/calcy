@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <title>precentage Calculator</title>
+    <style>
+        body{
+            background: url(image2.jpg);
+            background-attachment: fixed;
+            background-size: cover;
+
+        }
+    </style>
+</head>
+<body>
+  <button type="button" class="btn btn-dark m-5" data-toggle="modal" data-target="#calcyModal" >
+    Student Grade Calcy
+  </button>
+  
+  <!-- Modal -->
+  <div class="modal fade" id="calcyModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content bg-dark">
+        <div class="modal-header text-white">
+          <h5 class="modal-title" id="exampleModalLongTitle">Student Grade Calculator</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body dark">
+          <form>
+            <div class="form-group">
+              <input type="text" class="form-control" id="phy" placeholder="PHYSICS" value="">
+            </div>
+            
+            <div class="form-group">
+              <input type="text" class="form-control" id="chem" placeholder="CHEMESTRY" value="">
+            </div>
+            
+            <div class="form-group">
+              <input type="text" class="form-control" id="math" placeholder="MATH" value="">
+            </div>
+            
+            <div class="form-group">
+              <input type="text" class="form-control" id="hin" placeholder="HINDI" value="">
+            </div>
+            <div class="form-group">
+              <input type="text" class="form-control" id="eng" placeholder="ENGLISH" value="">
+            </div>
+            
+            <div class="text-center">
+                <button type="button" name="" value="" class="btn btn-dark text-light" onclick="calcy()">Show Percentage</button>
+            </div>
+          </form>
+          <br>
+          <div>
+            <div class="form-group text-white text-center">
+              <p id="showData"> </p>
+            </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+<script>
+
+const calcy = () =>{
+  let  phy = document.getElementById('phy').value;
+  let  chem = document.getElementById('chem').value;
+  let  math = document.getElementById('math').value;
+  let  hindi = document.getElementById('hin').value;
+  let  eng = document.getElementById('eng').value;
+  let totalGrades = parseFloat(phy) + parseFloat(chem) + parseFloat(math) + parseFloat(hindi) + parseFloat(eng);
+  let perc = (totalGrades/500)*100;
+  console.log(perc);
+  let grades = "";
+  if(perc<=100 && perc >=80)
+  {
+   grades = 'A';
+  }else if(perc < 80 && perc >=60)
+   
+    {
+      grades = 'B';
+    }else if(perc < 60 && perc >=40)
+    {
+      grades = 'C';
+    }else
+    {
+      grades = 'F';
+    }
+    if(perc >= 40)
+    {
+   document.getElementById('showData').innerHTML =`Out of 500 your tootal is ${totalGrades} and Percentage is ${perc}%. <br> your grade is ${grades}.Good Job `
+    }
+    else
+    {
+      document.getElementById('showData').innerHTML =`Out of 500 your tootal is ${totalGrades} and Percentage is ${perc}%. <br> your grade is ${grades}. Better Luck Next Time`
+    }
+    
+}
+    </script>
+</body>
+</html>
